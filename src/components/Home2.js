@@ -1,18 +1,26 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, TextInput, Image } from "react-native";
+import { StyleSheet, View, Image, Dimensions } from "react-native";
+import { Button, Input } from "react-native-elements";
+import { FontAwesome } from "@expo/vector-icons";
 
+const width = Dimensions.get("window").width - 40;
 const Home2 = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.img} source={require("../assets/home-logo.png")} />
-      <br />
+
       <View style={styles.row}>
-        <TextInput
-          style={styles.customInput}
+        <Input
+          inputStyle={styles.inputStyle}
+          containerStyle={styles.inputContainer}
           placeholder="Search a Literature"
         />
-        <br />
-        <Button title="Search" />
+
+        <Button
+          buttonStyle={styles.btnStyle}
+          containerStyle={styles.btnContainer}
+          title={<FontAwesome name="search" size={22} color="black" />}
+        />
       </View>
     </View>
   );
@@ -26,23 +34,34 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  customInput: {
-    height: 40,
-    paddingStart: "20px",
-    marginRight: "10px",
-    borderColor: "gray",
-    borderWidth: 1,
-    color: "#fff",
-  },
-  textLiterature: {
-    color: "#fff",
-  },
   img: {
-    width: "300px",
-    height: "50px",
+    width: width,
+    height: 50,
+    resizeMode: "contain",
+    marginBottom: 20,
   },
+
+  inputStyle: {
+    color: "#fff",
+  },
+  inputContainer: {
+    height: 40,
+    flex: 1,
+    paddingStart: 10,
+    borderWidth: 1,
+    borderColor: "grey",
+  },
+
   row: {
     flexDirection: "row",
+  },
+
+  btnStyle: {
+    backgroundColor: "#AF2E1C",
+  },
+  btnContainer: {
+    paddingEnd: 20,
+    paddingStart: 10,
   },
 });
 export default Home2;
