@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Button, Input } from "react-native-elements";
 
 const SignIn = (props) => {
@@ -26,7 +26,7 @@ const SignIn = (props) => {
         buttonStyle={styles.btnStyle}
         containerStyle={styles.btnContainer}
         title="Sign In "
-        onPress={() => props.navigation.navigate("Home")}
+        onPress={() => props.navigation.navigate("BottomNav")}
       />
     </View>
   );

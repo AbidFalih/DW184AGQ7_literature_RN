@@ -1,14 +1,13 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home2 from "../components/Home2";
-import Landing from "./Landing";
+import Home from "../components/Home";
 import Profile from "../components/Profile";
-import Logout from "../components/Logout";
+import AddLiterature from "../components/AddLiterature";
 import ListLiterature from "../components/ListLiterature";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Tab = createBottomTabNavigator();
-const Home = () => {
+const BottomNav = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -19,10 +18,10 @@ const Home = () => {
             iconName = focused ? "ios-home" : "md-home";
           } else if (route.name === "My Collections") {
             iconName = focused ? "ios-list-box" : "ios-list";
+          } else if (route.name === "Add") {
+            iconName = focused ? "ios-add-circle" : "ios-add-circle-outline";
           } else if (route.name === "Profile") {
             iconName = focused ? "ios-person" : "md-person";
-          } else if (route.name === "Logout") {
-            iconName = focused ? "ios-log-out" : "md-log-out";
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -35,12 +34,12 @@ const Home = () => {
         inactiveTintColor: "#ffffff",
       }}
     >
-      <Tab.Screen name="Home" component={Home2} />
+      <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="My Collections" component={ListLiterature} />
+      <Tab.Screen name="Add" component={AddLiterature} />
       <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="Logout" component={Logout} />
     </Tab.Navigator>
   );
 };
 
-export default Home;
+export default BottomNav;

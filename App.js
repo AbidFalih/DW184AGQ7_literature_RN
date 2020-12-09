@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Landing from "./src/screens/Landing";
 import SignIn from "./src/components/SignIn";
-import Home from "./src/screens/Home";
+import BottomNav from "./src/screens/BottomNav";
 
 const Stack = createStackNavigator();
 
@@ -28,9 +28,9 @@ export default function App() {
           options={{ title: "Sign In" }}
         />
         <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ title: "Home" }}
+          name="BottomNav"
+          component={BottomNav}
+          options={{ title: "BottomNav" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

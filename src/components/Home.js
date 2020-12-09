@@ -1,10 +1,27 @@
 import React from "react";
-import { StyleSheet, View, Image, Dimensions } from "react-native";
+import { StyleSheet, View, Dimensions, Image, FlatList } from "react-native";
 import { Button, Input } from "react-native-elements";
 import { FontAwesome } from "@expo/vector-icons";
+import { DATA } from "../assets/Data";
+import LiteratureCard from "./LiteratureCard";
 
 const width = Dimensions.get("window").width - 40;
-const Home2 = () => {
+const Home = () => {
+  const renderItem = ({ item }) => (
+    <LiteratureCard
+      key={item.id}
+      image={item.thumb}
+      title={item.title}
+      style={{
+        backgroundColor: "#161616",
+        width: Dimensions.get("window").width / 2 - 20,
+      }}
+      color="#fff"
+      author={item.author}
+      year={item.publication_date.split("-")[0]}
+    />
+  );
+
   return (
     <View style={styles.container}>
       <Image style={styles.img} source={require("../assets/home-logo.png")} />
@@ -22,6 +39,13 @@ const Home2 = () => {
           title={<FontAwesome name="search" size={22} color="black" />}
         />
       </View>
+
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+      />
     </View>
   );
 };
@@ -38,7 +62,13 @@ const styles = StyleSheet.create({
     width: width,
     height: 50,
     resizeMode: "contain",
-    marginBottom: 20,
+    marginBottom: 10,
+    marginTop: 10,
+  },
+
+  row: {
+    flexDirection: "row",
+    width: "100%",
   },
 
   inputStyle: {
@@ -46,14 +76,11 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     height: 40,
+    marginStart: 20,
+    padding: 0,
     flex: 1,
-    paddingStart: 10,
     borderWidth: 1,
     borderColor: "grey",
-  },
-
-  row: {
-    flexDirection: "row",
   },
 
   btnStyle: {
@@ -62,6 +89,7 @@ const styles = StyleSheet.create({
   btnContainer: {
     paddingEnd: 20,
     paddingStart: 10,
+    marginBottom: 10,
   },
 });
-export default Home2;
+export default Home;
